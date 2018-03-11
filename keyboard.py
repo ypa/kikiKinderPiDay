@@ -1,4 +1,11 @@
-from tkinter import Tk, Label, Button, Text, PhotoImage, END
+from tkinter import Tk
+from tkinter import (
+    Label,
+    Button,
+    Text,
+    PhotoImage,
+    END
+)
 
 class NamePad(object):
     def __init__(self, master):
