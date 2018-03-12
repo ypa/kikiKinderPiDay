@@ -34,6 +34,7 @@ class character:
         screen.blit(self.img, (self.x, self.y))
 
 character1 = character(200, 300, "imgs/animal_alphabet_*.png")
+character2 = character(200, 700, "imgs/pic_*.png")
 pos = 0
 
 def calculate_pos(event):
@@ -57,6 +58,7 @@ while True:
         print(pos)
 
     character1.update(pos)
+    character2.update(pos)
 
     pygame.display.update()
 
