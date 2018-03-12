@@ -30,7 +30,7 @@ class character:
     def update(self, pos):
         if pos != 0:
             self.ani_speed -= 1
-            self.x += pos
+            self.x += pos * 2
             if self.ani_speed == 0:
                 self.img = pygame.image.load(self.ani[self.ani_pos])
                 self.ani_speed = self.ani_speed_init
