@@ -28,21 +28,23 @@ class character:
         self.update(0)
 
     def update(self, pos):
-        if pos != 0:
-            self.ani_speed -= 1
-            self.x += pos * 2
-            if self.ani_speed == 0:
-                self.img = pygame.image.load(self.ani[self.ani_pos])
-                self.ani_speed = self.ani_speed_init
-                if self.ani_pos == self.ani_max:
-                    self.ani_pos = 0
-                else:
-                    self.ani_pos += 1
+        if pos >= 0:
+            self.ani_pos = pos
+            self.img = pygame.image.load(self.ani[self.ani_pos])
         screen.blit(self.img, (self.x, self.y))
 
 character1 = character()
 pos = 0
 
+def calculate_pos(event):
+    alphabets = 'abcdefghijklmnopqrstuvwxyz'
+    if event.type == KEYUP:
+        return -1
+    elif event.type == KEYDOWN:
+        char = chr(event.key)
+        if char in alphabets:
+            return alphabets.index(char)
+    return -1
 
 while True:
     screen.fill((255, 255, 255))
@@ -51,14 +53,8 @@ while True:
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             sys.exit()
-        if event.type == KEYDOWN and event.key == K_RIGHT:
-            pos = 1
-        elif event.type == KEYUP and event.key == K_RIGHT:
-            pos = 0
-        if event.type == KEYDOWN and event.key == K_LEFT:
-            pos = -1
-        elif event.type == KEYUP and event.key == K_LEFT:
-            pos = 0
+        pos = calculate_pos(event)
+        print(pos)
 
     character1.update(pos)
 
