@@ -4,7 +4,7 @@ import pygame, sys, glob
 from pygame import *
 
 h = 1200
-w = 900
+w = 1000
 
 screen = pygame.display.set_mode((w, h))
 
@@ -12,13 +12,13 @@ clock = pygame.time.Clock()
 
 
 class character:
-    def __init__(self):
-        self.x = 200
-        self.y = 300
+    def __init__(self, x, y, picture_files):
+        self.x = x
+        self.y = y
         self.ani_speed_init = 10
         self.ani_speed = self.ani_speed_init
 
-        self.ani = glob.glob("imgs/animal_alphabet_*.png")
+        self.ani = glob.glob(picture_files)
         self.ani.sort()
 
         self.ani_pos = 0
@@ -33,7 +33,7 @@ class character:
             self.img = pygame.image.load(self.ani[self.ani_pos])
         screen.blit(self.img, (self.x, self.y))
 
-character1 = character()
+character1 = character(200, 300, "imgs/animal_alphabet_*.png")
 pos = 0
 
 def calculate_pos(event):
