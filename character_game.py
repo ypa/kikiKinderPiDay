@@ -33,13 +33,15 @@ class character:
             self.img = pygame.image.load(self.ani[self.ani_pos])
         screen.blit(self.img, (self.x, self.y))
 
-character1 = character(100, 100, "imgs/animal_alphabet_*.png")
-character2 = character(100, 500, "imgs/pic_*.png")
+character1 = character(50, 50, "img_sm/animal_alphabet_*.png")
+character2 = character(50, 250, "img_sm/pic_*.png")
 pos = 0
 
 def calculate_pos(event):
     alphabets = 'abcdefghijklmnopqrstuvwxyz'
     if event.type == KEYUP:
+        if event.key == K_ESCAPE:
+            sys.exit()
         return -1
     elif event.type == KEYDOWN:
         char = chr(event.key)
@@ -55,7 +57,6 @@ while True:
         if event.type == pygame.QUIT:
             sys.exit()
         pos = calculate_pos(event)
-        print(pos)
 
     character1.update(pos)
     character2.update(pos)
