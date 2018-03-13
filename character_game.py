@@ -3,7 +3,7 @@
 import pygame, sys, glob
 from pygame import *
 
-h = 1200
+h = 800
 w = 1000
 
 screen = pygame.display.set_mode((w, h))
