@@ -1,12 +1,15 @@
 #!/usr/bin/env python
 
+import glob
+import sys
 from os.path import dirname, join, abspath
-import pygame, sys, glob
+
+import pygame
 from pygame import *
+
 
 HEIGHT = 800
 WIDTH = 1000
-
 SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
 CLOCK = pygame.time.Clock()
 
@@ -70,7 +73,6 @@ def main_loop():
 
         alphabet.update(pos)
         animal.update(pos)
-
         pygame.display.update()
 
 if __name__ == '__main__':
