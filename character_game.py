@@ -3,12 +3,11 @@
 import pygame, sys, glob
 from pygame import *
 
-h = 800
-w = 1000
+HEIGHT = 800
+WIDTH = 1000
 
-screen = pygame.display.set_mode((w, h))
-
-clock = pygame.time.Clock()
+SCREEN = pygame.display.set_mode((WIDTH, HEIGHT))
+CLOCK = pygame.time.Clock()
 
 
 class character:
@@ -31,11 +30,8 @@ class character:
         if pos >= 0:
             self.ani_pos = pos
             self.img = pygame.image.load(self.ani[self.ani_pos])
-        screen.blit(self.img, (self.x, self.y))
+        SCREEN.blit(self.img, (self.x, self.y))
 
-character1 = character(50, 50, "img_sm/animal_alphabet_*.png")
-character2 = character(50, 250, "img_sm/pic_*.png")
-pos = 0
 
 def calculate_pos(event):
     alphabets = 'abcdefghijklmnopqrstuvwxyz'
@@ -49,17 +45,25 @@ def calculate_pos(event):
             return alphabets.index(char)
     return -1
 
-while True:
-    screen.fill((255, 255, 255))
-    clock.tick(60)
 
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            sys.exit()
-        pos = calculate_pos(event)
+def main_loop():
+    character1 = character(50, 50, "img_sm/animal_alphabet_*.png")
+    character2 = character(50, 250, "img_sm/pic_*.png")
+    pos = 0
 
-    character1.update(pos)
-    character2.update(pos)
+    while True:
+        SCREEN.fill((255, 255, 255))
+        CLOCK.tick(60)
 
-    pygame.display.update()
+        for event in pygame.event.get():
+            if event.type == pygame.QUIT:
+                sys.exit()
+            pos = calculate_pos(event)
 
+        character1.update(pos)
+        character2.update(pos)
+
+        pygame.display.update()
+
+if __name__ == '__main__':
+    main_loop()
