@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 
+from os.path import dirname, join, abspath
 import pygame, sys, glob
 from pygame import *
 
@@ -45,10 +46,17 @@ def calculate_pos(event):
             return alphabets.index(char)
     return -1
 
+def prepare_characters():
+    img_dir = join(dirname(abspath(__file__)), 'imgs')
+    alphabet_pics = join(img_dir, 'animal_alphabet_*.png')
+    animal_pics = join(img_dir, 'pic_*.png')
+    alphabet = character(50, 50, alphabet_pics)
+    animal = character(50, 250, animal_pics)
+    return alphabet, animal
 
 def main_loop():
-    character1 = character(50, 50, "imgs/animal_alphabet_*.png")
-    character2 = character(50, 250, "imgs/pic_*.png")
+    alphabet, animal = prepare_characters()
+
     pos = 0
 
     while True:
@@ -60,8 +68,8 @@ def main_loop():
                 sys.exit()
             pos = calculate_pos(event)
 
-        character1.update(pos)
-        character2.update(pos)
+        alphabet.update(pos)
+        animal.update(pos)
 
         pygame.display.update()
 
