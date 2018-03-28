@@ -47,8 +47,8 @@ def calculate_pos(event):
 
 
 def main_loop():
-    character1 = character(50, 50, "img_sm/animal_alphabet_*.png")
-    character2 = character(50, 250, "img_sm/pic_*.png")
+    character1 = character(50, 50, "imgs/animal_alphabet_*.png")
+    character2 = character(50, 250, "imgs/pic_*.png")
     pos = 0
 
     while True:
